@@ -1,0 +1,37 @@
+[
+    {
+        "Part": ".SYNOPSIS block",
+        "Description": "Check for .SYNOPSIS block",
+        "Regex": "<#.*\\.SYNOPSIS.*?#>"
+    },
+    {
+        "Part": "Parameter Validation",
+        "Description": "Check for parameter validation",
+        "Regex": "\\[ValidateNotNullOrEmpty\\]|\\[ValidateSet\\]"
+    },
+    {
+        "Part": "Error Handling",
+        "Description": "Check for error handling",
+        "Regex": "try\\s*\\{.*\\}\\s*catch\\s*\\{.*\\}|try\\s*\\{.*\\}\\s*finally\\s*\\{.*\\}"
+    },
+    {
+        "Part": "Type Annotations",
+        "Description": "Check for type annotations",
+        "Regex": "\\[string\\]|\\[int\\]|\\[bool\\]"
+    },
+    {
+        "Part": "Comments and Documentation",
+        "Description": "Check for sufficient comments and documentation",
+        "Regex": "^#"
+    },
+    {
+        "Part": "Function Error Handling",
+        "Description": "Check each function for error handling",
+        "Regex": "try\\s*\\{.*\\}\\s*catch\\s*\\{.*\\}|try\\s*\\{.*\\}\\s*finally\\s*\\{.*\\}"
+    },
+    {
+        "Part": "Function Parameter Validation",
+        "Description": "Check each function for parameter validation if the function has a parameter block",
+        "Regex": "\\[ValidateNotNullOrEmpty\\]|\\[ValidateSet\\]"
+    }
+]
