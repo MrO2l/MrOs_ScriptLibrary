@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/column-formatting.schema.json",
+  "elmType": "div",
+  "style": {
+    "display": "block",
+    "width": "100%",
+    "padding": "6px 10px",
+    "border": "2px solid #000000",
+    "border-radius": "8px",
+    "text-align": "center",
+    "font-weight": "600",
+    "color": "#ffffff",
+    "background-color": "=concat('hsl(', sub(240, mul(div(sub([$Priority], 1), 9), 240)), ', 85%, 35%)')"
+  },
+  "children": [
+    {
+      "elmType": "span",
+      "txtContent": "=concat('Priorität ', [$Priority])"
+    }
+  ]
+}
