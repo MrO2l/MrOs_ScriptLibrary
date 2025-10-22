@@ -1,0 +1,116 @@
+<!-- Checkmk 2.4 HTML Email – Custom Header Section -->
+<!-- Kompakt, mobilfreundlich, dunkler/heller Modus kompatibel -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-family:Arial,Helvetica,sans-serif; background:#0b1020; background:linear-gradient(135deg,#0b1020,#1a2340); padding:0; margin:0;">
+  <tr>
+    <td align="center" style="padding:24px 16px;">
+      <table role="presentation" width="640" cellpadding="0" cellspacing="0" style="width:100%; max-width:640px; background:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.15);">
+        <!-- Kopfzeile / Status-Badge -->
+        <tr>
+          <td style="padding:20px 24px; background:#0d1b2a; color:#ffffff;">
+            <div style="font-size:13px; letter-spacing:.08em; opacity:.85;">
+              Checkmk Notification &middot; $SHORTDATETIME$
+            </div>
+            <div style="margin-top:6px; font-size:20px; font-weight:700;">
+              <!-- Titel dynamisch für Host/Service -->
+              <!-- $WHAT$ ist "HOST" oder "SERVICE" -->
+              <!-- Service-Fall -->
+              <!-- z. B.: SERVICE CRIT – Filesystem /var – web01 -->
+              <span style="opacity:.9">$WHAT$</span>
+              <span>
+                <!-- Status/State -->
+                <!-- Für Services: $SERVICESTATE$ ; für Hosts: $HOSTSTATE$ -->
+                $SERVICESTATE$$HOSTSTATE$ 
+              </span>
+              <span style="opacity:.9">–</span>
+              <span>
+                <!-- Für Services: $SERVICEDESC$ ; für Hosts: $HOSTALIAS$/$HOSTNAME$ -->
+                $SERVICEDESC$$HOSTALIAS$
+              </span>
+              <span style="opacity:.9">–</span>
+              <span>$HOSTNAME$</span>
+            </div>
+            <div style="margin-top:8px; font-size:13px; opacity:.9;">
+              $EVENT_TXT$
+            </div>
+          </td>
+        </tr>
+
+        <!-- Schnelle Übersicht (Key Facts) -->
+        <tr>
+          <td style="padding:16px 24px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+              <tr>
+                <td style="padding:10px 0; font-size:14px;">
+                  <strong>Host:</strong> $HOSTNAME$ &nbsp;&middot;&nbsp; <strong>Alias:</strong> $HOSTALIAS$ &nbsp;&middot;&nbsp; <strong>IP:</strong> $HOSTADDRESS$
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:4px 0; font-size:14px;">
+                  <!-- Nur Service-Fall relevant -->
+                  <strong>Service:</strong> $SERVICEDESC$
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:4px 0; font-size:14px;">
+                  <strong>Site:</strong> $OMD_SITE$ &nbsp;&middot;&nbsp; <strong>Kontakt(e):</strong> $CONTACTS$
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:4px 0; font-size:14px;">
+                  <strong>Benachrichtigungstyp:</strong> $NOTIFICATIONTYPE$ &nbsp;&middot;&nbsp; <strong>Zeit:</strong> $SHORTDATETIME$
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Aktueller Output -->
+        <tr>
+          <td style="padding:0 24px 16px 24px;">
+            <div style="background:#f6f8fb; border:1px solid #e6eaf2; border-radius:10px; padding:14px;">
+              <div style="font-size:13px; font-weight:700; margin-bottom:6px;">
+                Aktueller Output
+              </div>
+              <div style="font-family:Consolas,Monaco,'Courier New',monospace; font-size:13px; white-space:pre-wrap; line-height:1.4;">
+                <!-- Für Services -->
+                $SERVICEOUTPUT$
+                <!-- Für Hosts (Fallback) -->
+                $HOSTOUTPUT$
+              </div>
+              <!-- Long Output (Details) -->
+              <div style="font-family:Consolas,Monaco,'Courier New',monospace; font-size:12px; white-space:pre-wrap; line-height:1.35; color:#333; margin-top:8px;">
+                $LONGSERVICEOUTPUT$ $LONGHOSTOUTPUT$
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Nützliche Links -->
+        <tr>
+          <td style="padding:0 24px 20px 24px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;">
+              <tr>
+                <td style="padding:0; vertical-align:top;">
+                  <a href="$SERVICEURL$" style="display:inline-block; text-decoration:none; background:#0d6efd; color:#fff; padding:10px 14px; border-radius:8px; font-size:14px; font-weight:600;">Zum Checkmk-Objekt</a>
+                  <a href="$HOSTURL$" style="display:inline-block; text-decoration:none; background:#6c757d; color:#fff; padding:10px 14px; border-radius:8px; font-size:14px; font-weight:600; margin-left:8px;">Host-Detailseite</a>
+                </td>
+              </tr>
+              <tr>
+                <td style="font-size:12px; color:#666; padding-top:10px;">
+                  Tipp: In den Notification-Einstellungen lässt sich ein URL-Prefix setzen, damit Links immer korrekt sind.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Fußzeile -->
+        <tr>
+          <td style="padding:14px 24px; background:#f6f8fb; color:#555; font-size:12px;">
+            Gesendet von Checkmk &middot; Site: $OMD_SITE$ &middot; Regel: $RULE_NAME$
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
